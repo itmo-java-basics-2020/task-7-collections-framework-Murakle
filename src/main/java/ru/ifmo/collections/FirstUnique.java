@@ -9,15 +9,19 @@ import java.util.*;
 public class FirstUnique {
     private static final int NULL_RETURN = -1;
     private final Set<Integer> NotUnique;
+    private final Set<Integer> Unique;
     private final Deque<Integer> deq;
 
     public FirstUnique(int[] numbers) {
         NotUnique = new TreeSet<>();
         deq = new LinkedList<>();
+        Unique = new TreeSet<>();
         for (int number : numbers) {
-            if (deq.contains(number)) {
+            if (Unique.contains(number)) {
+                Unique.remove(number);
                 NotUnique.add(number);
             } else {
+                Unique.add(number);
                 deq.addLast(number);
             }
         }
@@ -31,9 +35,10 @@ public class FirstUnique {
     }
 
     public void add(int value) {
-        if (deq.contains(value)) {
+        if (Unique.contains(value)) {
             NotUnique.add(value);
         } else {
+            Unique.add(value);
             deq.addLast(value);
         }
     }
