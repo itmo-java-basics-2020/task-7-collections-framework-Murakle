@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class FirstUnique {
     private static final int NULL_RETURN = -1;
-    Set<Integer> NotUnique;
-    Deque<Integer> deq;
+    private final Set<Integer> NotUnique;
+    private final Deque<Integer> deq;
 
     public FirstUnique(int[] numbers) {
         NotUnique = new TreeSet<>();
@@ -24,8 +24,9 @@ public class FirstUnique {
     }
 
     public int showFirstUnique() {
-        while (deq.size() > 0 && NotUnique.contains(deq.peekFirst()))
+        while (deq.size() > 0 && NotUnique.contains(deq.peekFirst())) {
             deq.removeFirst();
+        }
         return Optional.ofNullable(deq.peekFirst()).orElse(NULL_RETURN);
     }
 

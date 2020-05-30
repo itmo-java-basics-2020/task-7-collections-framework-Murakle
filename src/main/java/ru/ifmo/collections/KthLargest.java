@@ -10,15 +10,16 @@ import java.util.*;
  * For each call to the method KthLargest.add(), return the element representing the kth largest element in the stream.
  */
 public class KthLargest {
-    private PriorityQueue<Integer> firstKNumbers;
+    private final PriorityQueue<Integer> firstKNumbers;
 
     public KthLargest(int k, int[] numbers) {
         firstKNumbers = new PriorityQueue<>();
         for (int number : numbers) {
             firstKNumbers.add(number);
         }
-        while (firstKNumbers.size() > k)
+        while (firstKNumbers.size() > k) {
             firstKNumbers.remove();
+        }
     }
 
     public int add(int val) {

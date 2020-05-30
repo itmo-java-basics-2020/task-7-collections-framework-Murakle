@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class LruCache<K, V> {
     private static float HASH_MAP_DEFAULT_LOAD_FACTOR = 0.75f;
-    Map<K, V> cache;
+    private final Map<K, V> cache;
 
     public LruCache(int capacity) {
         cache = new LinkedHashMap<>(capacity, HASH_MAP_DEFAULT_LOAD_FACTOR, true) {
